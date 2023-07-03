@@ -21,3 +21,9 @@
   - Descer até '**Seus Aplicativos**'
   - **Adicionar impressão digital**
     ![Alt text](image-3.png)
+
+## docs
+
+- [firestore](https://firebase.google.com/docs/firestore?hl=pt-br)
+- [dart](https://dart.dev/guides)
+- [chatGPT](https://chat.openai.com/)

@@ -1,16 +1,23 @@
 # math_game
 
-A new Flutter project.
+## Oque você precisa fazer...
 
-## Getting Started
+### 1 - Clonar o repositório
 
-This project is a starting point for a Flutter application.
+- Copie o link destacado;
+- Acesse a pasta onde você quer colocar o projeto
+- Dentro dela aperte com o botão direto e selecione **Abrir no terminal**
+- no terminal insira essa linha `git clone https://github.com/bruno9800/math_game.git`
 
-A few resources to get you started if this is your first Flutter project:
+### 2 - Criar SHA-1
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Com o terminal ainda aberto acesse a pasta math_game/android ( `cd math_game/android`)
+- insira a seguinte linha `./gradlew signingReport`
+  ![Alt text](image-2.png)
+- copie o código SHA1
+- Acesse o projeto math_game no firebase e vá até as configurações do projeto
+  - **Engrenagem**: _canto superior esquerdo_
+  - **Configurações do projeto**
+  - Descer até '**Seus Aplicativos**'
+  - **Adicionar impressão digital**
+    ![Alt text](image-3.png)

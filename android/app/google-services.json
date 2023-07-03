@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "427905189558",
+    "project_id": "math-game-es3",
+    "storage_bucket": "math-game-es3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427905189558:android:0ccf9cfa8788a9a51dc817",
+        "android_client_info": {
+          "package_name": "es3.mathgame.math_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "427905189558-rptpdmna7fv1n0aufavt9h4napa6na05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaxZ10yp__RCv6ZqiG06Oi-qU6NrBoKVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "427905189558-rptpdmna7fv1n0aufavt9h4napa6na05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

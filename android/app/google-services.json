@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "427905189558-rptpdmna7fv1n0aufavt9h4napa6na05.apps.googleusercontent.com",
+          "client_id": "427905189558-55j2gu3js0d8bhaqu5uoucsra2b5odvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es3.mathgame.math_game",
+            "certificate_hash": "2ef079009f280f9c3c7832b179321d976b219c75"
+          }
+        },
+        {
+          "client_id": "427905189558-3kptpb9nkpgsl00l5mnmn7dhsbivm0ov.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "427905189558-rptpdmna7fv1n0aufavt9h4napa6na05.apps.googleusercontent.com",
+              "client_id": "427905189558-3kptpb9nkpgsl00l5mnmn7dhsbivm0ov.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "427905189558-gibjigjan6jm75h13d0k6tihcuh4itig.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "es3.mathgame.mathGame"
+              }
             }
           ]
         }

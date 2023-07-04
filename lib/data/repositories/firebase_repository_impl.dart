@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:math_game/data/models/player.dart';
 import 'package:math_game/data/repositories/firebase_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,7 +17,7 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
   }
 
   @override
-  Future<PlayerEntity> getUserByEmail(String email) async {
+  Future<PlayerEntity?> getUserByEmail(String email) async {
     final querySnapshot =
         await playersCollection.where('email', isEqualTo: email).get();
 
@@ -26,6 +28,24 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
       return playerEntity;
     }
 
-    throw Exception('Player with email $email not found.');
+    return null;
+  }
+
+  @override
+  Future<void> createUser(PlayerEntity player) async{
+    try {
+      final userAlreadyExists = await getUserByEmail(player.email);
+
+      if(userAlreadyExists != null) {
+        print('Usuário já existe');
+        return;
+      }
+
+      String playerData = json.encode(player.toJson());
+      await playersCollection.add(jsonDecode(playerData));
+      print('Novo usuário criado com sucesso!');
+    } catch (e) {
+      print('Erro ao criar o novo usuário: $e');
+    }
   }
 }

@@ -7,7 +7,7 @@ class GetPlayerProfileUseCase {
 
   call(String email) async {
     try {
-      PlayerEntity player = await firebaseRepo.getUserByEmail(email);
+      PlayerEntity? player = await firebaseRepo.getUserByEmail(email);
 
       return player;
     } catch (err) {

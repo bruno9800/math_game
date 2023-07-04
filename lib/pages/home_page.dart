@@ -7,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_button.dart';
 import 'package:math_game/data/models/player.dart';
 import 'package:math_game/data/repositories/firebase_repository_impl.dart';
+import 'package:math_game/pages/config_page.dart';
+import 'package:math_game/pages/list_page.dart';
 import 'package:math_game/services/authentication/google_auth_service.dart';
 import '../common/custom_theme.dart';
 
@@ -31,14 +33,16 @@ class HomePage extends StatelessWidget {
                           height: 40, width: 40),
                     ),
                     onTap: () {
-                      AuthService().logout();
+                      AuthService().signOut();
                     }),
                 CircleAvatar(
                   backgroundColor: Colors.white,
                   child: IconButton(
                       color: CustomTheme.BLUE,
                       icon: Icon(Icons.settings_outlined),
-                      onPressed: () {}),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ConfigPage()),);
+                      }),
                 ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,60 +60,20 @@ class HomePage extends StatelessWidget {
               color: CustomTheme.RED,
               label: 'SAIR',
               onPressed: () {
-                AuthService().logout();
+                AuthService().signOut();
               },
             ),
-            SizedBox(height: 40),
-            FutureBuilder<List<PlayerEntity>>(
-              future: FirebaseRepositoryImpl().getAllPlayers(),
-              builder: (context, snapshot) {
-                if(snapshot.connectionState == ConnectionState.done) {
-                  if(snapshot.hasData) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (c, index) => (
-                        Column(
-                          children: [
-                            ListTile(
-                              iconColor: Colors.white,
-                              tileColor: Colors.white,
-                              leading: const Icon(FontAwesomeIcons.user),
-                              title: Text('email: ${snapshot.data![index].email}'),
-                              subtitle: Column(
-                                children: [
-                                  ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: snapshot.data![index].stars.length,
-                                    itemBuilder: (c, starsIndex) => (
-                                      ListTile(
-                                        title: Text('lvl: $starsIndex, stars:  ${snapshot.data![index].stars[(starsIndex + 1).toString()]}'),
-                                      )
-                                  )
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        )
-                      ),
-                    );
-                  } else if(snapshot.hasError) {
-                    return Center(
-                      child: Text('${snapshot.error}', style: TextStyle(color: Colors.white, fontSize: 16),),
-                    );
-                  } else {
-                    return Center(
-                      child: Text('Algo deu errado', style: TextStyle(color: Colors.white, fontSize: 32),),
-                    );
-                  }
-                } else {
-                  return const Center(child: CircularProgressIndicator(),);
-                }
+            SizedBox(height: 16),
+            CustomButton(
+              color: CustomTheme.RED,
+              label: 'LISTA',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ListPage()),
+                );
               },
-
             )
-
           ]),
         ),
         padding: EdgeInsets.all(15.0),

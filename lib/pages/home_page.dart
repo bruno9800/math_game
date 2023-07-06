@@ -8,6 +8,7 @@ import 'package:math_game/common/custom_button.dart';
 import 'package:math_game/data/models/player.dart';
 import 'package:math_game/data/repositories/firebase_repository_impl.dart';
 import 'package:math_game/pages/config_page.dart';
+import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/list_page.dart';
 import 'package:math_game/services/authentication/google_auth_service.dart';
 import '../common/custom_theme.dart';
@@ -58,9 +59,13 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 60),
             CustomButton(
               color: CustomTheme.RED,
-              label: 'SAIR',
+              label: 'JOGAR',
               onPressed: () {
-                AuthService().signOut();
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const GamePage()),
+                );
+                print('entrou');
               },
             ),
             SizedBox(height: 16),

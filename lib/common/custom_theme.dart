@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class CustomTheme {
   static const Color BackColor = Color(0xff011638);
   static const Color ForeColor = Colors.white;
+  static const Color Black = Colors.black;
   static const Color RED = Color(0xfffb3640);
   static const Color YELLOW = Color(0xffffc857);
   static const Color GREEN = Color(0xff0cce6b);

@@ -5,6 +5,7 @@ import 'package:math_game/services/stream_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

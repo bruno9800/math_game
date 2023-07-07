@@ -31,7 +31,6 @@ class CustomPiece extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0), color: CustomTheme.PIECE),
-              width: 82,
               margin: const EdgeInsets.only(right: 4, bottom: 4),
           child: Center(
             child: Text( expression,

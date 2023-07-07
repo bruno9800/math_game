@@ -50,7 +50,14 @@ class GameState extends State<GameComponent> {
                       return CustomPiece(
                         expression: item.toString(),
                         onPressed: () {
-                          print('clicou');
+                          setState(() {
+                            if(GameOverList.length > 3) {
+                              print('game over');
+                              GameOverList.clear();
+                            }else {
+                              GameOverList.add(item);
+                            }
+                          });
                         },
                       );
                     }
@@ -58,26 +65,30 @@ class GameState extends State<GameComponent> {
             ),
           ),
         Container(
-          height: 88,
+          height: 92,
           margin: const EdgeInsets.only(right: 8, left: 8),
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
               color: CustomTheme.BOX_BACK,
               borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                width: 2,
+                color: const Color(0xff250902),
+                style: BorderStyle.solid,
+              )
           ),
           child: GridView.builder(
-              padding: const EdgeInsets.all(8),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
                   mainAxisExtent: 72
               ),
-              itemCount: list.length,
+              itemCount: GameOverList.length,
               itemBuilder: (context, index) {
-                final item = list[index];
+                final GameOverItem = GameOverList[index];
                 return CustomPiece(
-                  expression: item.toString(),
+                  expression: GameOverItem.toString(),
                   onPressed: () {
                     print('clicou');
                   },
@@ -85,7 +96,7 @@ class GameState extends State<GameComponent> {
               }
           ),
         ),
-        SizedBox(height: 28,),
+        const SizedBox(height: 24,),
         CustomIconButton(
           icon: FontAwesomeIcons.solidLightbulb,
           onPressed: () {

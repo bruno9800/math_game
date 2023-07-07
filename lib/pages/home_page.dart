@@ -11,8 +11,10 @@ import 'package:math_game/pages/config_page.dart';
 import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/list_page.dart';
 import 'package:math_game/services/authentication/google_auth_service.dart';
+import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
 import 'learning_page.dart';
+import 'levels_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -67,7 +69,7 @@ class HomePage extends StatelessWidget {
                         ..color = Colors.white)),
               SizedBox(height: 60),
               CustomButton(
-                color: CustomTheme.RED,
+                color: CustomTheme.Button,
                 label: 'JOGAR',
                 onPressed: () {
                     Navigator.push(
@@ -79,7 +81,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               CustomButton(
-                color: CustomTheme.RED,
+                color: CustomTheme.Button,
                 label: 'LISTA',
                 onPressed: () {
                   Navigator.push(
@@ -90,7 +92,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 16),
               CustomButton(
-                color: CustomTheme.RED,
+                color: CustomTheme.Button,
                 label: 'APRENDER',
                 onPressed: () {
                   Navigator.push(
@@ -101,13 +103,14 @@ class HomePage extends StatelessWidget {
                 },
               ),
               SizedBox(height: 150),
-
-              CustomButton(
-                width: 80,
-                color: CustomTheme.RED,
-                label: '+',
-                onPressed: null,
-
+              CustomIconButton(
+                  icon: FontAwesomeIcons.listOl,
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                    MaterialPageRoute(builder: (context) => const LevelsPage()),
+                    );
+                  }
               )
 
             ]),

@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
+  static const Color BackgroundColor = Color(0xffF4F4ED);
+  static const Color Matthie = Color(0xff3ABC6E);
+  static const Color Button = Color(0xff543ABC);
+  static const Color ButtonGame = Color(0xffFFFFFF);
   static const Color BackColor = Color(0xff011638);
   static const Color ForeColor = Colors.white;
   static const Color Black = Colors.black;

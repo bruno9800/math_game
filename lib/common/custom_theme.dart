@@ -13,4 +13,5 @@ class CustomTheme {
   static const Color BLUE = Color(0xff01baef); //Color(0xff016fb9);
   static const Color PINK = Color(0xffff4365);
   static const Color BOX_BACK = Color(0xfff4f4ed);
+  static const Color PIECE = Color(0xfff9f2e7);
 }

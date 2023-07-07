@@ -19,7 +19,7 @@ class GamePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: buildTitle(title: 'Level 5'),
+        title: buildTitle(title: 'Level 5', context: context),
         ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +34,7 @@ class GamePage extends StatelessWidget {
   }
 
 }
-Widget buildTitle({required String title}) {
+Widget buildTitle({required String title, required BuildContext context}) {
   return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +72,7 @@ Widget buildTitle({required String title}) {
         CustomIconButton(
           icon: FontAwesomeIcons.house,
           onPressed: () {
-            print('click');
+            Navigator.pop(context);
           },
         ),
       ],

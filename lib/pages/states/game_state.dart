@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_piece.dart';
 import 'package:math_game/common/custom_theme.dart';
+import 'package:math_game/game_core/game.dart';
+import 'package:math_game/game_core/piece.dart';
 
 class GameComponent extends StatefulWidget {
   @override
@@ -22,8 +24,8 @@ class CreateList {
 
 
 class GameState extends State<GameComponent> {
-  final List<int> list = List.generate(24, (index) => index + 1);
-  final List<int> GameOverList = [];
+  final Game game = Game(1);
+  final List<Piece> GameOverList = [];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,18 +46,18 @@ class GameState extends State<GameComponent> {
                         mainAxisSpacing: 8,
                         mainAxisExtent: 72
                     ),
-                    itemCount: list.length,
+                    itemCount: game.pieces.length,
                     itemBuilder: (context, index) {
-                      final item = list[index];
+                      final piece = game.pieces[index];
                       return CustomPiece(
-                        expression: item.toString(),
+                        expression: piece.expression,
                         onPressed: () {
                           setState(() {
                             if(GameOverList.length > 3) {
                               print('game over');
                               GameOverList.clear();
                             }else {
-                              GameOverList.add(item);
+                              GameOverList.add(piece);
                             }
                           });
                         },
@@ -86,9 +88,9 @@ class GameState extends State<GameComponent> {
               ),
               itemCount: GameOverList.length,
               itemBuilder: (context, index) {
-                final GameOverItem = GameOverList[index];
+                final piece = GameOverList[index];
                 return CustomPiece(
-                  expression: GameOverItem.toString(),
+                  expression: piece.expression,
                   onPressed: () {
                     print('clicou');
                   },

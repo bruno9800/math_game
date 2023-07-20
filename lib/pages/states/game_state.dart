@@ -6,6 +6,7 @@ import 'package:math_game/common/custom_piece.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
+import 'package:math_game/pages/over_page.dart';
 
 class GameComponent extends StatefulWidget {
   @override
@@ -83,16 +84,29 @@ class GameState extends State<GameComponent> {
                               gameOver = handlePressedPiece(piece.result);
                               print("não foi game over");
                               if(gameOver) {
-                                //gerar modal game over
-                                print('game over');
-                                gameOverList.clear();
-                              }
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
+                                  builder: (BuildContext context) {
+                                    return GameOverModal(onRestart: () {
+                                      setState(() {
+                                        gameScore = 0;
+                                        gameOver = false;
+                                        game.restart();
+                                        gameOverList.clear();
+                                      });
+                                    }
+                                      , onMenu: (){},);
+                                  },
+                                );
+
                             }else {
                               handlePressedPiece(piece.result);
                             }
                             if(gameScore == 6) {
                               // Ganhou;
                             }
+                          }
                           });
                         },
                       );

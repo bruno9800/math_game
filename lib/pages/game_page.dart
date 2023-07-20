@@ -70,7 +70,7 @@ class GamePage extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: buildTitle(title: 'Level 5', context: context),
         ),
-      body: GameComponent(),
+      body: GameComponent(context: context),
     );
   }
 

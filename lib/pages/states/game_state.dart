@@ -9,6 +9,8 @@ import 'package:math_game/game_core/piece.dart';
 import 'package:math_game/pages/over_page.dart';
 
 class GameComponent extends StatefulWidget {
+  const GameComponent({super.key, required BuildContext context});
+
   @override
   State<StatefulWidget> createState() {
     return GameState();
@@ -96,7 +98,9 @@ class GameState extends State<GameComponent> {
                                         gameOverList.clear();
                                       });
                                     }
-                                      , onMenu: (){},);
+                                      , onMenu: (){
+                                        Navigator.pop(context);
+                                      },);
                                   },
                                 );
 

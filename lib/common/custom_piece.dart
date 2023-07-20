@@ -7,36 +7,41 @@ class CustomPiece extends StatelessWidget {
       {Key? key,
         required this.onPressed,
         required this.expression,
+        required this.isVisible,
       })
       : super(key: key);
   final VoidCallback? onPressed;
   final String expression;
+  final bool isVisible;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4.0), color: Color(0xffcec6c1),
-            boxShadow: [
-              BoxShadow(
-                color: RandomPieceColor().get(),
-                offset: Offset(3, 3),
-              )
-          ]
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0), color: CustomTheme.PIECE),
+    return Visibility(
+        visible: isVisible,
+        child: GestureDetector(
+          onTap: onPressed,
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.0), color: Color(0xffcec6c1),
+                boxShadow: [
+                  BoxShadow(
+                    color: RandomPieceColor().get(),
+                    offset: Offset(3, 3),
+                  )
+                ]
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0), color: CustomTheme.PIECE),
               margin: const EdgeInsets.only(right: 4, bottom: 4),
-          child: Center(
-            child: Text( expression,
-                style: const TextStyle(
-                    color: CustomTheme.Black, fontSize: 16)),
+              child: Center(
+                child: Text( expression,
+                    style: const TextStyle(
+                        color: CustomTheme.Black, fontSize: 16)),
+              ),
+            ),
           ),
-        ),
-      ),
+        )
     );
   }
 }

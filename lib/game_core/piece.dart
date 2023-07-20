@@ -4,14 +4,19 @@ class Piece {
   late int result;
   late int difficult;
   late String expression;
+  bool isVisible = true;
 
   Piece(this.result, this.difficult) {
     expression = setExpression();
   }
 
+  setIsVisible(bool isVisible) {
+    this.isVisible = isVisible;
+  }
+
   String setExpression() {
     if (difficult == 1) {
-      return _getExpressionWithN(result, 3);
+      return _getExpressionWithN(result, 2);
     } else {
       return _getExpressionWithN(result, 2);
     }

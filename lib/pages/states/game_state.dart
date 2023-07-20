@@ -25,7 +25,29 @@ class CreateList {
 
 class GameState extends State<GameComponent> {
   final Game game = Game(1);
-  final List<Piece> GameOverList = [];
+  bool gameOver = false;
+  int gameScore = 0;
+  final List<Piece> gameOverList = [];
+
+  bool handlePressedPiece(int actualResult) {
+    int quantity = 0;
+    for(Piece piece in gameOverList) {
+      if(piece.result == actualResult) {
+        quantity++;
+      }
+    }
+    print(quantity);
+    if(quantity == 3 ) {
+      setState(() {
+        gameOverList.removeWhere((element) => element.result == actualResult);
+        gameScore++;
+      });
+      return false;
+    }
+
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,15 +71,27 @@ class GameState extends State<GameComponent> {
                     itemCount: game.pieces.length,
                     itemBuilder: (context, index) {
                       final piece = game.pieces[index];
+
                       return CustomPiece(
                         expression: piece.expression,
+                        isVisible: piece.isVisible,
                         onPressed: () {
+                          piece.setIsVisible(false);
                           setState(() {
-                            if(GameOverList.length > 3) {
-                              print('game over');
-                              GameOverList.clear();
+                            gameOverList.add(piece);
+                            if(gameOverList.length > 4) {
+                              gameOver = handlePressedPiece(piece.result);
+                              print("não foi game over");
+                              if(gameOver) {
+                                //gerar modal game over
+                                print('game over');
+                                gameOverList.clear();
+                              }
                             }else {
-                              GameOverList.add(piece);
+                              handlePressedPiece(piece.result);
+                            }
+                            if(gameScore == 6) {
+                              // Ganhou;
                             }
                           });
                         },
@@ -86,14 +120,13 @@ class GameState extends State<GameComponent> {
                   mainAxisSpacing: 8,
                   mainAxisExtent: 72
               ),
-              itemCount: GameOverList.length,
+              itemCount: gameOverList.length,
               itemBuilder: (context, index) {
-                final piece = GameOverList[index];
+                final piece = gameOverList[index];
                 return CustomPiece(
+                  isVisible: true,
                   expression: piece.expression,
-                  onPressed: () {
-                    print('clicou');
-                  },
+                  onPressed: () {},
                 );
               }
           ),

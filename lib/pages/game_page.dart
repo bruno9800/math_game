@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/pages/states/game_state.dart';
+import 'package:math_game/pages/states/stars_state.dart';
 
 // Criar evento de pausar o timer;
 Widget buildTitle({required String title, required BuildContext context}) {
@@ -29,15 +30,7 @@ Widget buildTitle({required String title, required BuildContext context}) {
             child: Text('$title', style: TextStyle(color: CustomTheme.Black),),
           ),
           const SizedBox(height: 12,),
-          const Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('1'),
-              Text('2'),
-              Text('3')
-            ],
-          )
+          StarsComponent(fillStars: 3),
         ],
       ),
       const SizedBox(width: 48,),

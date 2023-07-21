@@ -8,9 +8,7 @@ import 'package:math_game/pages/subtract_page.dart';
 import 'package:math_game/pages/sum_page.dart';
 
 import '../common/custom_button.dart';
-import 'config_page.dart';
-import 'game_page.dart';
-import 'list_page.dart';
+
 
 class LearningPage extends StatelessWidget {
   const LearningPage({super.key});

@@ -7,8 +7,8 @@ import 'package:math_game/common/custom_button.dart';
 import 'package:math_game/pages/config_page.dart';
 import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/list_page.dart';
-import 'package:math_game/pages/rankingalternative_page.dart';
-import 'package:math_game/services/authentication/google_auth_service.dart';
+import 'package:math_game/pages/profile_page.dart';
+import 'package:math_game/pages/ranking_page.dart';
 import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
 import 'learning_page.dart';
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                             height: 40, width: 40),
                       ),
                       onTap: () {
-                        AuthService().signOut();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()),);
                       }),
                   CircleAvatar(
                     backgroundColor: Colors.white,
@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RankingAlternativePage()),
+                    MaterialPageRoute(builder: (context) => RankingPage()),
                   );
                   print('entrou');
                 },

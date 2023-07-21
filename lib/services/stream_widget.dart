@@ -11,19 +11,23 @@ class StreamWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userProvider = Provider.of<PlayerProvider>(context, listen: false);
+    final playerProvider = Provider.of<PlayerProvider>(context, listen: false);
     return Scaffold(
       body: StreamBuilder(
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
+
+            print('aguardando');
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData) {
+            print('logado');
               final user = snapshot.data!;
-                userProvider.setUserByEmail(user.email!);
+                playerProvider.setUserByEmail(user.email!);
             return HomePage();
           } else if (snapshot.hasError) {
             print("**==> DEU ERRADO :(\n");
           }
+          print('login');
           //return ErrorPopUp();
           return const LoginPage();
         },

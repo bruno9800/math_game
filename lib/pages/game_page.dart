@@ -5,9 +5,14 @@ import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/pages/states/game_state.dart';
 import 'package:math_game/pages/states/stars_state.dart';
+import 'package:math_game/services/provider/player_provider.dart';
+import 'package:provider/provider.dart';
 
 // Criar evento de pausar o timer;
 Widget buildTitle({required String title, required BuildContext context}) {
+  final playerProvider = Provider.of<PlayerProvider>(context);
+  final currentLevel = playerProvider.getStars().last + 1; // o primeiro indice da Lista é 0 e o de níveis é 1;
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +32,7 @@ Widget buildTitle({required String title, required BuildContext context}) {
                 color: CustomTheme.ForeColor,
                 borderRadius: BorderRadius.circular(16)
             ),
-            child: Text('$title', style: TextStyle(color: CustomTheme.Black),),
+            child: Text('level $currentLevel', style: TextStyle(color: CustomTheme.Black),),
           ),
           const SizedBox(height: 12,),
           StarsComponent(fillStars: 3),

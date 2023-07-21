@@ -4,15 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:math_game/services/stream_widget.dart';
 import '../common/custom_button.dart';
-import '../common/custom_ranking_item.dart';
 import '../services/authentication/google_auth_service.dart';
-import 'config_page.dart';
-import 'game_page.dart';
-import 'list_page.dart';
 
-class RankingAlternativePage extends StatelessWidget {
-  const RankingAlternativePage({super.key});
+
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -187,8 +185,10 @@ class RankingAlternativePage extends StatelessWidget {
                           height: 50,
                           width: 100,
                           label: 'Sair',
-                          onPressed: () {
-                            AuthService().signOut();
+                          onPressed: () async {
+                            await AuthService().signOut();
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => StreamWidget()));
                           },
                         ),
                         Spacer(),

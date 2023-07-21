@@ -3,18 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
-import 'package:math_game/pages/divide_page.dart';
-import 'package:math_game/pages/multiply_page.dart';
-import 'package:math_game/pages/subtract_page.dart';
-import 'package:math_game/pages/sum_page.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import '../common/custom_button.dart';
 import '../common/custom_ranking_item.dart';
-import 'config_page.dart';
-import 'game_page.dart';
-import 'list_page.dart';
+
 
 class RankingPage extends StatelessWidget {
   const RankingPage({super.key});

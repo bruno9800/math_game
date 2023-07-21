@@ -49,6 +49,7 @@ class AuthService {
 
     // Desloga o usuário autenticado no Firebase
     await _auth.signOut();
+
   }
 }
 

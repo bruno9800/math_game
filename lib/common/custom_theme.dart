@@ -17,4 +17,5 @@ class CustomTheme {
   static const Color PINK = Color(0xffff4365);
   static const Color BOX_BACK = Color(0xfff4f4ed);
   static const Color PIECE = Color(0xfff9f2e7);
+  static const LinearGradient GradientStars = LinearGradient(colors: [ Color(0xFFBD6531), Color(0xFFF9B68E)]);
 }

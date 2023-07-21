@@ -21,7 +21,6 @@ import 'levels_page.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final usuario = FirebaseAuth.instance.currentUser!;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

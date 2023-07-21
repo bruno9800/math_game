@@ -10,6 +10,10 @@ class Game {
     pieces = setPieces(difficulty);
   }
 
+  void restart() {
+    pieces = setPieces(difficulty);
+  }
+
   List<Piece> setPieces(difficulty) {
     List<Piece> pieces = [];
     List<int> numbers = _generateNumbers(8);

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
@@ -21,17 +22,41 @@ class RankingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    var usuario = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       backgroundColor: CustomTheme.Matthie,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        toolbarHeight: 90,
+        toolbarHeight: 10,
         elevation: 0,
       ),
       //Body List
       body: Center(
         child:Column(
           children: [
+              Container(
+                width: 330,
+                height: 100,
+                child: Row(
+                  children: [
+                    CustomIconButton(
+                      icon: FontAwesomeIcons.user,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Spacer(),
+                    CustomIconButton(
+                      icon: FontAwesomeIcons.house,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+
+              ),
               Container(
                 width: 300,
                 height: 100,
@@ -47,24 +72,29 @@ class RankingPage extends StatelessWidget {
                 child:
                 Row(
                   children:[
-                    CustomIconButton(
-                      icon: FontAwesomeIcons.person,
-                      onPressed: (null),
-                    ),
+                    Spacer(),
+                    GestureDetector(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.0),
+                          child: Image.network(usuario.photoURL!,
+                              height: 60, width: 60),
+                        ),
+                        onTap: () {
+                        }),
                     SizedBox(width: 10),
                     Column(
                         children: [
                           SizedBox(height: 10),
                           Text("Ricardo",
                               style:
-                              GoogleFonts.robotoMono(
-                                fontSize: 20,
+                              GoogleFonts.nunitoSans(
+                                fontSize: 24,
                                 color: Colors.black,
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.normal,
                               )),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           Container(
-                            width: 60,
+                            width:80,
                             height: 30,
                             decoration: BoxDecoration(
 
@@ -81,8 +111,8 @@ class RankingPage extends StatelessWidget {
                               child:
                               Text('Ouro',
                                   style:
-                                  GoogleFonts.robotoMono(
-                                  fontSize: 16,
+                                  GoogleFonts.nunitoSans(
+                                  fontSize: 18,
                                   color: Colors.yellowAccent,
                                     fontWeight: FontWeight.bold,
                                    )
@@ -104,11 +134,12 @@ class RankingPage extends StatelessWidget {
                         ),
                       child: Text("1° Lugar",
                         style:
-                        GoogleFonts.lilitaOne(
+                        GoogleFonts.nunitoSans(
                           fontSize: 25,
-                          color: Colors.amber,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold,)),
                     ),
+                    Spacer(),
                   ],
                 ),
               ),
@@ -126,8 +157,14 @@ class RankingPage extends StatelessWidget {
               ),
                 child: Column(
                   children:[
-                    Text("Rank Geral",
-                      style: TextStyle(fontSize: 16)),
+                    Text('Ranking',
+                        style:
+                        GoogleFonts.mcLaren(
+                          fontSize: 32,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
                     Column(
                       children:[
                         SizedBox(height: 5),
@@ -135,9 +172,11 @@ class RankingPage extends StatelessWidget {
                         SizedBox(height: 5),
                         CustomRankingItem(position: '2°', name: 'Bruno',points: '8'),
                         SizedBox(height: 5),
-                        CustomRankingItem(position: '3°', name: 'Alan',points: '5')
+                        CustomRankingItem(position: '3°', name: 'Alan',points: '5'),
+                        SizedBox(height: 15),
                       ]
                     )
+
                   ]
                 )
               ),

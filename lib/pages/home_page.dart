@@ -11,6 +11,7 @@ import 'package:math_game/pages/config_page.dart';
 import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/list_page.dart';
 import 'package:math_game/pages/ranking_page.dart';
+import 'package:math_game/pages/rankingalternative_page.dart';
 import 'package:math_game/services/authentication/google_auth_service.dart';
 import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
@@ -110,7 +111,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const RankingPage()),
+                    MaterialPageRoute(builder: (context) => RankingAlternativePage()),
                   );
                   print('entrou');
                 },

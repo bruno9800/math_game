@@ -25,7 +25,7 @@ class CustomRankingItem extends StatelessWidget {
     // TODO: implement build
     return  Container(
       padding: EdgeInsets.all(15),
-      width: 300,
+      width: 260,
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.transparent,
@@ -39,8 +39,8 @@ class CustomRankingItem extends StatelessWidget {
         children:[
           Text(position,
               style:
-              GoogleFonts.lilitaOne(
-                fontSize: 30,
+              GoogleFonts.nunitoSans(
+                fontSize: 18,
                 color: CustomTheme.Matthie,
                 fontWeight: FontWeight.bold,
               )
@@ -48,17 +48,17 @@ class CustomRankingItem extends StatelessWidget {
           SizedBox(width: 10),
           Text(name,
               style:
-              GoogleFonts.robotoMono(
-                fontSize: 20,
+              GoogleFonts.mcLaren(
+                fontSize: 18,
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
               )
           ),
-          SizedBox(width: 100),
+          Spacer(),
           Text(points,
               style:
-              GoogleFonts.lilitaOne(
-                fontSize: 40,
+              GoogleFonts.nunitoSans(
+                fontSize: 24,
                 color: Colors.white70,
                 fontWeight: FontWeight.bold,
               )

@@ -1,16 +1,12 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_button.dart';
-import 'package:math_game/data/models/player.dart';
-import 'package:math_game/data/repositories/firebase_repository_impl.dart';
 import 'package:math_game/pages/config_page.dart';
 import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/list_page.dart';
-import 'package:math_game/pages/ranking_page.dart';
 import 'package:math_game/pages/rankingalternative_page.dart';
 import 'package:math_game/services/authentication/google_auth_service.dart';
 import '../common/custom_icon_button.dart';
@@ -21,8 +17,10 @@ import 'levels_page.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final usuario = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: CustomTheme.Matthie,
       body: Container(

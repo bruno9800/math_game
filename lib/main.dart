@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/firebase_options.dart';
+import 'package:math_game/services/provider/player_provider.dart';
 import 'package:math_game/services/stream_widget.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -18,13 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //darkTheme: CustomTheme.darkMode,
-      debugShowCheckedModeBanner: false,
-      home: StreamWidget(),
-      theme: ThemeData(),
-      //themeMode: ThemeMode.system,
-      title: 'Matthie',
+    return ChangeNotifierProvider(
+      create: (_) => PlayerProvider(),
+      child: MaterialApp(
+        //darkTheme: CustomTheme.darkMode,
+        debugShowCheckedModeBanner: false,
+        home: StreamWidget(),
+        theme: ThemeData(),
+        //themeMode: ThemeMode.system,
+        title: 'Matthie',
+      ),
     );
   }
 }

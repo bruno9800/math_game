@@ -5,12 +5,13 @@ import 'package:math_game/data/repositories/firebase_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseRepositoryImpl extends FirebaseRepository {
-  final CollectionReference playersCollection =
-      FirebaseFirestore.instance.collection('players');
+
+  static FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final CollectionReference playersCollection = firestore.collection('players');
 
   @override
   Future<List<PlayerEntity>> getAllPlayers() async {
-    final snapshot = await FirebaseFirestore.instance.collection('players').get();
+    final snapshot = await firestore.collection('players').get();
 
     final players = snapshot.docs.map((doc) => PlayerEntity.fromJson(doc.data())).toList();
     return players;

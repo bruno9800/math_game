@@ -85,31 +85,33 @@ class GameState extends State<GameComponent> {
                           setState(() {
                             gameOverList.add(piece);
                             if(gameOverList.length > 4) {
-                              gameOver = handlePressedPiece(piece.result);
-                              print("não foi game over");
-                              if(gameOver) {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
-                                  builder: (BuildContext context) {
-                                    return GameOverModal(onRestart: () {
-                                      setState(() {
-                                        gameScore = 0;
-                                        gameOver = false;
-                                        game.restart();
-                                        gameOverList.clear();
-                                      });
-                                    }
-                                      , onMenu: (){
-                                        Navigator.pop(context);
-                                      },);
+                                gameOver = handlePressedPiece(piece.result);
+                                print("não foi game over");
+                                if(gameOver) {
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
+                                    builder: (BuildContext context) {
+                                      return GameOverModal(onRestart: () {
+                                        setState(() {
+                                          gameScore = 0;
+                                          gameOver = false;
+                                          game.restart();
+                                          gameOverList.clear();
+                                        });
+                                      }
+                                        , onMenu: (){
+                                          Navigator.pop(context);
+                                        },);
                                   },
                                 );
 
-                            }else {
+                            } else {
                               handlePressedPiece(piece.result);
                             }
-                            if(gameScore == 6) {
+                            }
+                            handlePressedPiece(piece.result);
+                            if(gameScore == 8) {
                               showDialog(
                                 context: context,
                                 barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
@@ -130,7 +132,6 @@ class GameState extends State<GameComponent> {
                                 },
                               );
                             }
-                          }
                           });
                         },
                       );

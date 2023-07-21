@@ -21,6 +21,8 @@ class _StarIconState extends State<StarsComponent> {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
 
 
       children: [
@@ -31,6 +33,7 @@ class _StarIconState extends State<StarsComponent> {
           ),
         const SizedBox(width: 4),
         Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               3 <= widget.fillStars ? FontAwesomeIcons.solidStar : FontAwesomeIcons.star,

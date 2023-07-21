@@ -15,12 +15,18 @@ class GameOverModal extends StatelessWidget {
       actionsPadding: EdgeInsets.only(bottom: 32),
       titlePadding: EdgeInsets.only(top: 32),
       backgroundColor: CustomTheme.PIECE,
-      title: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Você perdeu!'),
-        ],
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12)
+      ),
+      title: Container(
+        height: 32,
+        color: CustomTheme.BLUE,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Você perdeu')
+          ],
+        ),
       ),
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,6 +55,7 @@ class GameOverModal extends StatelessWidget {
                 onMenu();
                 Navigator.of(context).pop(); // Fecha o modal
               },
+              padding: 4,
             ),
           ],
         )

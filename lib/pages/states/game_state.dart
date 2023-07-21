@@ -6,8 +6,12 @@ import 'package:math_game/common/custom_piece.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
+import 'package:math_game/pages/modals/over_modal.dart';
+import 'package:math_game/pages/modals/win_modal.dart';
 
 class GameComponent extends StatefulWidget {
+  const GameComponent({super.key, required BuildContext context});
+
   @override
   State<StatefulWidget> createState() {
     return GameState();
@@ -27,6 +31,7 @@ class GameState extends State<GameComponent> {
   final Game game = Game(1);
   bool gameOver = false;
   int gameScore = 0;
+  int stars = 2;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult) {
@@ -80,18 +85,52 @@ class GameState extends State<GameComponent> {
                           setState(() {
                             gameOverList.add(piece);
                             if(gameOverList.length > 4) {
-                              gameOver = handlePressedPiece(piece.result);
-                              print("não foi game over");
-                              if(gameOver) {
-                                //gerar modal game over
-                                print('game over');
-                                gameOverList.clear();
-                              }
-                            }else {
+                                gameOver = handlePressedPiece(piece.result);
+                                print("não foi game over");
+                                if(gameOver) {
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
+                                    builder: (BuildContext context) {
+                                      return GameOverModal(onRestart: () {
+                                        setState(() {
+                                          gameScore = 0;
+                                          gameOver = false;
+                                          game.restart();
+                                          gameOverList.clear();
+                                        });
+                                      }
+                                        , onMenu: (){
+                                          Navigator.pop(context);
+                                        },);
+                                  },
+                                );
+
+                            } else {
                               handlePressedPiece(piece.result);
                             }
-                            if(gameScore == 6) {
-                              // Ganhou;
+                            }
+                            handlePressedPiece(piece.result);
+                            if(gameScore == 8) {
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
+                                builder: (BuildContext context) {
+                                  return GameWinModal(onRestart: () {
+                                    setState(() {
+                                      gameScore = 0;
+                                      gameOver = false;
+                                      game.restart();
+                                      gameOverList.clear();
+                                    });
+                                  }
+                                    , onMenu: (){
+                                      Navigator.pop(context);
+                                    },
+                                  stars: stars,
+                                  );
+                                },
+                              );
                             }
                           });
                         },

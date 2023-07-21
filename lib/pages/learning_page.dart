@@ -17,92 +17,126 @@ class LearningPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: CustomTheme.Matthie,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        toolbarHeight: 90,
+        toolbarHeight: 10,
         elevation: 0,
       ),
       //Body List
-      body: Padding(
-        padding: EdgeInsets.all(15.0),
+      body: Container(
         child: Center(
-          child: Container(
-            width: 300,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.transparent,
-                width: 5,
-                style:BorderStyle.solid,
+          child: Column(
+            children: [
+              Container(
+                width: 330,
+                height: 100,
+                child: Row(
+                  children: [
+                    CustomIconButton(
+                      icon: FontAwesomeIcons.user,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    Spacer(),
+                    CustomIconButton(
+                      icon: FontAwesomeIcons.house,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
               ),
-                borderRadius: BorderRadius.circular(20),
-              color: CustomTheme.BackgroundColor,
-            ),
-            child: Column(children: [
-              SizedBox(height: 30),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Soma',
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SumPage()),
-                  );
-                },
+              Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Center(
+                  child: Container(
+                    width: 330,
+                    height: 550,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: CustomTheme.BackgroundColor,
+                      boxShadow: [ // Add box shadow here
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.35),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                          offset: Offset(3, 8),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Soma',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SumPage()),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 16),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Substração',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SubtractPage()),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 16),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Multiplicação',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const MultiplyPage()),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 16),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Divisão',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const DividePage()),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 16),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Jogo',
+                          onPressed: null,
+                        ),
+                        Spacer(),
+                        CustomIconButton(
+                          icon: FontAwesomeIcons.chevronLeft,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Spacer(),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(height: 16),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Substração',
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SubtractPage()),
-                  );
-                },
-              ),
-              SizedBox(height: 16),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Multiplicação',
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MultiplyPage()),
-                  );
-                },
-              ),
-              SizedBox(height: 16),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Divisão',
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const DividePage()),
-                  );
-                },
-              ),
-              SizedBox(height: 16),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Jogo',
-                onPressed: null,
-              ),
-              SizedBox(height: 60),
-              CustomIconButton(
-                  icon: FontAwesomeIcons.chevronLeft,
-                  onPressed: (){
-                    Navigator.pop(context);
-                  }
-              )
-            ]),
+            ],
           ),
         ),
       ),
     );
   }
-
 }

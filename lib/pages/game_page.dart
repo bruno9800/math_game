@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/pages/states/game_state.dart';
@@ -32,7 +33,15 @@ Widget buildTitle({required String title, required BuildContext context}) {
                 color: CustomTheme.ForeColor,
                 borderRadius: BorderRadius.circular(16)
             ),
-            child: Text('level $currentLevel', style: TextStyle(color: CustomTheme.Black),),
+            child: Text(
+                'nível $currentLevel',
+                  style:
+                  GoogleFonts.mcLaren(
+                    fontSize: 18,
+                    color: CustomTheme.Black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  ),
           ),
           const SizedBox(height: 12,),
           StarsComponent(fillStars: 3),
@@ -52,14 +61,15 @@ Widget buildTitle({required String title, required BuildContext context}) {
 
 
 class GamePage extends StatelessWidget {
-  const GamePage({super.key});
+  const GamePage({super.key,required this.currentLevel});
+  final int currentLevel;
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     // TODO: implement build
     return Scaffold(
-      backgroundColor: CustomTheme.BackColor,
+      backgroundColor: CustomTheme.Matthie,
       appBar: AppBar(
         toolbarHeight: 120,
         centerTitle: true,

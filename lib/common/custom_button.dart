@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_if_null_operators
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'custom_theme.dart';
 
 class CustomButton extends StatelessWidget {
@@ -29,15 +30,21 @@ class CustomButton extends StatelessWidget {
                   children: [
                     Icon(icon, color: Colors.white),
                     Text(label,
-                        style: TextStyle(
-                            color: CustomTheme.ForeColor, fontSize: 28)),
+                          style: GoogleFonts.mcLaren(
+                            fontSize: 32,
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                          ),),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 )
               : Center(
                   child: Text(label,
-                      style: TextStyle(
-                          color: CustomTheme.ForeColor, fontSize: 28)),
+                    style: GoogleFonts.mcLaren(
+                      fontSize: 32,
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal,
+                    ),),
                 ),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40.0), color: color),

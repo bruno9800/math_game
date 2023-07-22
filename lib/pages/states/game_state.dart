@@ -140,7 +140,7 @@ class GameState extends State<GameComponent> {
             ),
           ),
         Container(
-          height: 92,
+          height: 100,
           margin: const EdgeInsets.only(right: 8, left: 8),
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -170,14 +170,14 @@ class GameState extends State<GameComponent> {
               }
           ),
         ),
-        const SizedBox(height: 24,),
+        const SizedBox(height: 12,),
         CustomIconButton(
           icon: FontAwesomeIcons.solidLightbulb,
           onPressed: () {
             print('dica');
           },
         ),
-        SizedBox(height: 42,),
+        SizedBox(height: 20,),
       ],
     );
   }

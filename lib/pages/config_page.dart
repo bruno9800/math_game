@@ -12,7 +12,7 @@ class ConfigPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomTheme.BackColor,
+      backgroundColor: CustomTheme.Matthie,
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -67,7 +67,7 @@ class ConfigPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: const Icon(FontAwesomeIcons.chevronLeft)),
+                        icon: const Icon(FontAwesomeIcons.arrowLeftLong)),
                   )
                 ],
               ),

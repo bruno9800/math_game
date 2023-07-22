@@ -11,6 +11,7 @@ import 'package:math_game/pages/profile_page.dart';
 import 'package:math_game/pages/ranking_page.dart';
 import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
+import 'about_page.dart';
 import 'learning_page.dart';
 import 'levels_page.dart';
 
@@ -41,15 +42,17 @@ class HomePage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30.0),
                         child: Image.network(usuario.photoURL!,
-                            height: 40, width: 40),
+                            height: 60, width: 60),
                       ),
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()),);
                       }),
                   CircleAvatar(
+                    radius: 30,
                     backgroundColor: Colors.white,
                     child: IconButton(
-                        color: CustomTheme.BLUE,
+                      iconSize: 45,
+                        color: CustomTheme.Black,
                         icon: Icon(Icons.settings_outlined),
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => const ConfigPage()),);
@@ -58,7 +61,7 @@ class HomePage extends StatelessWidget {
                 ],
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
               ),
-              SizedBox(height: 60),
+              SizedBox(height: 10),
               Text('Matthie.',
                   style: TextStyle(
                       fontSize: 73,
@@ -69,7 +72,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 60),
               CustomButton(
                 color: CustomTheme.Button,
-                label: 'JOGAR',
+                label: 'Jogar',
                 onPressed: () {
                     Navigator.push(
                     context,
@@ -81,18 +84,18 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 16),
               CustomButton(
                 color: CustomTheme.Button,
-                label: 'LISTA',
+                label: 'Sobre',
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ListPage()),
+                    MaterialPageRoute(builder: (context) => const AboutPage()),
                   );
                 },
               ),
               SizedBox(height: 16),
               CustomButton(
                 color: CustomTheme.Button,
-                label: 'APRENDER',
+                label: 'Aprender',
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -104,7 +107,7 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 16),
               CustomButton(
                 color: CustomTheme.Button,
-                label: 'RANKING',
+                label: 'Ranking',
                 onPressed: () {
                   Navigator.push(
                     context,

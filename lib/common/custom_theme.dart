@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTheme {
+  static const Color levelOff = Color(0xff535353);
   static const Color BackgroundColor = Color(0xffF4F4ED);
   static const Color Matthie = Color(0xff3ABC6E);
   static const Color Button = Color(0xff543ABC);

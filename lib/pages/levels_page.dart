@@ -1,22 +1,34 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:math_game/common/custom_levelcard.dart';
 import 'package:math_game/data/models/player.dart';
+import 'package:provider/provider.dart';
 
 import '../common/custom_button.dart';
 import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
 import '../services/authentication/google_auth_service.dart';
+import '../services/provider/player_provider.dart';
 
 class LevelsPage extends StatelessWidget {
   const LevelsPage({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     var usuario = FirebaseAuth.instance.currentUser!;
+    var firstName = usuario.displayName!.split(" ").first; // Split and get the first name
+
+    final playerProvider = Provider.of<PlayerProvider>(context);
+    final stars= playerProvider.getStars();
+    print(stars);
+    //Lista de inteiros [0,1,2,3,4,5]
+    //Index = Nível && Valor = Conteúdo;
 
     return Scaffold(
       backgroundColor: CustomTheme.Matthie,
@@ -63,7 +75,7 @@ class LevelsPage extends StatelessWidget {
                               ),
                               SizedBox(width: 10),
                               Text(
-                                usuario.displayName.toString(),
+                                firstName, // Use the first name here
                                 style: GoogleFonts.nunitoSans(
                                   fontSize: 24,
                                   color: Colors.black,
@@ -119,7 +131,11 @@ class LevelsPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                child: CustomLevelCard(level: index + 1, stars: 2),
+                                child: CustomLevelCard(
+                                    level: index+1,
+                                    stars: index<stars.length?stars[index]:4,
+                                    backcolor: index<stars.length?CustomTheme.PIECE:CustomTheme.levelOff,
+                                ),
                               );
                             },
                           ),

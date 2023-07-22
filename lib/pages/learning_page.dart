@@ -120,7 +120,7 @@ class LearningPage extends StatelessWidget {
                         ),
                         Spacer(),
                         CustomIconButton(
-                          icon: FontAwesomeIcons.chevronLeft,
+                          icon: FontAwesomeIcons.arrowLeftLong,
                           onPressed: () {
                             Navigator.pop(context);
                           },

@@ -21,14 +21,6 @@ class GameComponent extends StatefulWidget {
 
 }
 
-class CreateList {
-  List<int> list = [];
-  CreateList({required size}) {
-    for(int i = 0; i < size; i++, list.add(i)) {}
-  }
-}
-
-
 class GameState extends State<GameComponent> {
 
   final Game game = Game(1);

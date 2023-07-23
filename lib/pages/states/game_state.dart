@@ -8,6 +8,8 @@ import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
 import 'package:math_game/pages/modals/over_modal.dart';
 import 'package:math_game/pages/modals/win_modal.dart';
+import 'package:math_game/services/provider/stars_provider.dart';
+import 'package:provider/provider.dart';
 
 class GameComponent extends StatefulWidget {
   const GameComponent({super.key, required BuildContext context});
@@ -28,10 +30,10 @@ class CreateList {
 
 
 class GameState extends State<GameComponent> {
+
   final Game game = Game(1);
   bool gameOver = false;
   int gameScore = 0;
-  int stars = 2;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult) {
@@ -55,6 +57,7 @@ class GameState extends State<GameComponent> {
 
   @override
   Widget build(BuildContext context) {
+    //final starsProvider = Provider.of<StarsProvider>(context);
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -127,7 +130,7 @@ class GameState extends State<GameComponent> {
                                     , onMenu: (){
                                       Navigator.pop(context);
                                     },
-                                  stars: stars,
+                                  stars: 2,
                                   );
                                 },
                               );

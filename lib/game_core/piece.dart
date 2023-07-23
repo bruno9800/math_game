@@ -90,7 +90,7 @@ class Piece {
     numberFactors -= 1;
     while (numberFactors > 0) {
       final divisor = _getOneDivisor(n, except_1: false);
-      exp += '$divisor*';
+      exp += '$divisor''x';
       n = (n / divisor).floor();
       numberFactors -= 1;
     }

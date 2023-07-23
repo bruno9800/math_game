@@ -50,8 +50,8 @@ class CustomLevelCard extends StatelessWidget {
           //index=level
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const GamePage()),
-          )
+            MaterialPageRoute(builder: (context) => const GamePage(currentLevel: 1,)),
+          );
         },
     );
   }

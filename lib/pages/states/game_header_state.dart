@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../common/custom_icon_button.dart';
 import '../../common/custom_theme.dart';
 import '../../services/provider/player_provider.dart';
-import '../../utils/timer_control.dart';
 
 class GameHeaderComponent extends StatelessWidget {
   @override

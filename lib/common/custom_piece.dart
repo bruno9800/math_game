@@ -8,11 +8,13 @@ class CustomPiece extends StatelessWidget {
         required this.onPressed,
         required this.expression,
         required this.isVisible,
+        required this.color,
       })
       : super(key: key);
   final VoidCallback? onPressed;
   final String expression;
   final bool isVisible;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CustomPiece extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.0), color: Color(0xffcec6c1),
                 boxShadow: [
                   BoxShadow(
-                    color: RandomPieceColor().get(),
+                    color: color,
                     offset: Offset(3, 3),
                   )
                 ]

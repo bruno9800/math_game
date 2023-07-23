@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class RandomPieceColor {
+class RandomPiecesColor {
   List<Color> shadowColor = [
     const Color(0xff00c2ff), // blue
     const Color(0xffe53935), // red
@@ -10,7 +10,21 @@ class RandomPieceColor {
     const Color(0xff3abc6e), // green
   ];
 
-  Color get() {
+  List<Color>? _colors;
+  final int _size;
+
+  List<Color> get colors => _colors!;
+
+  RandomPiecesColor(this._size) {
+    _colors = List.generate(_size, (index) => _get());
+  }
+
+
+  update() {
+    _colors = List.generate(_size, (index) => _get());
+  }
+
+  Color _get() {
     final random = Random();
     final randomIndex = random.nextInt(shadowColor.length);
     return shadowColor[randomIndex];

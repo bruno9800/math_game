@@ -38,5 +38,13 @@ class TimerController {
   bool isRunning() {
     return _isRunning;
   }
+
+  // Método para reiniciar o contador de tempo
+  void restart() {
+    stop(); // Primeiro, paramos o contador, se estiver em execução
+    _elapsedTime = Duration.zero; // Reiniciamos o tempo decorrido
+    start(); // Iniciamos novamente o contador
+  }
+
 }
 

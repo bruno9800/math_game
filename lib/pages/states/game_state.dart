@@ -9,10 +9,12 @@ import 'package:math_game/game_core/piece.dart';
 import 'package:math_game/pages/modals/over_modal.dart';
 import 'package:math_game/pages/modals/win_modal.dart';
 import 'package:math_game/services/provider/stars_provider.dart';
+import 'package:math_game/utils/random_piece_color.dart';
 import 'package:provider/provider.dart';
 
 class GameComponent extends StatefulWidget {
-  const GameComponent({super.key, required BuildContext context});
+  GameComponent({super.key, required BuildContext context});
+
 
   @override
   State<StatefulWidget> createState() {
@@ -22,8 +24,8 @@ class GameComponent extends StatefulWidget {
 }
 
 class GameState extends State<GameComponent> {
-
   final Game game = Game(1);
+  final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
   int gameScore = 0;
   final List<Piece> gameOverList = [];
@@ -49,7 +51,8 @@ class GameState extends State<GameComponent> {
 
   @override
   Widget build(BuildContext context) {
-    //final starsProvider = Provider.of<StarsProvider>(context);
+    final starsProvider = Provider.of<StarsProvider>(context);
+    final colors = pieceColors.colors;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -75,7 +78,11 @@ class GameState extends State<GameComponent> {
                       return CustomPiece(
                         expression: piece.expression,
                         isVisible: piece.isVisible,
+                        color: colors[index],
                         onPressed: () {
+                          setState(() {
+                            pieceColors.update();
+                          });
                           piece.setIsVisible(false);
                           setState(() {
                             gameOverList.add(piece);
@@ -83,11 +90,13 @@ class GameState extends State<GameComponent> {
                                 gameOver = handlePressedPiece(piece.result);
                                 print("não foi game over");
                                 if(gameOver) {
+                                  starsProvider.pause();
                                   showDialog(
                                     context: context,
                                     barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
                                     builder: (BuildContext context) {
                                       return GameOverModal(onRestart: () {
+                                        starsProvider.restart();
                                         setState(() {
                                           gameScore = 0;
                                           gameOver = false;
@@ -107,11 +116,13 @@ class GameState extends State<GameComponent> {
                             }
                             handlePressedPiece(piece.result);
                             if(gameScore == 8) {
+                              starsProvider.pause();
                               showDialog(
                                 context: context,
                                 barrierDismissible: false, // Impede que o modal seja fechado clicando fora dele
                                 builder: (BuildContext context) {
                                   return GameWinModal(onRestart: () {
+                                    starsProvider.restart();
                                     setState(() {
                                       gameScore = 0;
                                       gameOver = false;
@@ -122,7 +133,7 @@ class GameState extends State<GameComponent> {
                                     , onMenu: (){
                                       Navigator.pop(context);
                                     },
-                                  stars: 2,
+                                  stars: starsProvider.stars,
                                   );
                                 },
                               );
@@ -159,6 +170,7 @@ class GameState extends State<GameComponent> {
                 final piece = gameOverList[index];
                 return CustomPiece(
                   isVisible: true,
+                  color: colors[index],
                   expression: piece.expression,
                   onPressed: () {},
                 );

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../utils/timer_control.dart';
 
 class StarsProvider with ChangeNotifier {
-  int _stars = 1;
+  int _stars = 3;
   TimerController _timerControl = TimerController();
   late Timer _timerUpdate;
   int _elapsedSeconds = 0;
@@ -26,11 +26,13 @@ class StarsProvider with ChangeNotifier {
 
   void pause () => _timerControl.pause();
   void unpause() => _timerControl.start();
+  void restart() => _timerControl.restart();
+  void stop() => _timerControl.stop();
 
 
   void _updateStars() {
-    const int rapido = 20; // Replace with the desired time for 3 stars
-    const int medio = 40; // Replace with the desired time for 2 stars
+    const int rapido = 120; // Replace with the desired time for 3 stars
+    const int medio = 180; // Replace with the desired time for 2 stars
 
     if (_elapsedSeconds <= rapido) {
       _setStars(3);

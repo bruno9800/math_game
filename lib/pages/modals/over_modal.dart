@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
+import 'package:math_game/services/provider/stars_provider.dart';
+import 'package:provider/provider.dart';
 
 class GameOverModal extends StatelessWidget {
   final Function onRestart;
@@ -11,6 +13,7 @@ class GameOverModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return AlertDialog(
       actionsPadding: EdgeInsets.only(bottom: 32),
       titlePadding: EdgeInsets.only(top: 32),

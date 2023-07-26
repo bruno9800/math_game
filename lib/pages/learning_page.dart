@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
@@ -6,9 +8,7 @@ import 'package:math_game/pages/divide_page.dart';
 import 'package:math_game/pages/multiply_page.dart';
 import 'package:math_game/pages/subtract_page.dart';
 import 'package:math_game/pages/sum_page.dart';
-
 import '../common/custom_button.dart';
-
 
 class LearningPage extends StatelessWidget {
   const LearningPage({super.key});

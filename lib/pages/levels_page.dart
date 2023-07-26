@@ -1,5 +1,6 @@
-import 'dart:ffi';
+// ignore_for_file: unused_import
 
+import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:math_game/common/custom_levelcard.dart';
 import 'package:math_game/data/models/player.dart';
 import 'package:provider/provider.dart';
-
 import '../common/custom_button.dart';
 import '../common/custom_icon_button.dart';
 import '../common/custom_theme.dart';
@@ -16,8 +16,6 @@ import '../services/provider/player_provider.dart';
 
 class LevelsPage extends StatelessWidget {
   const LevelsPage({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {

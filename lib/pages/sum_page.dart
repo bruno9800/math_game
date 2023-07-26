@@ -36,7 +36,7 @@ class SumPage extends StatelessWidget {
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
                           )),
-                          Icon(Icons.plus_one_rounded, color: CustomTheme.Button, size: 64)
+                          Icon(FontAwesomeIcons.plus, color: CustomTheme.Button, size: 64)
                         ],
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       ),

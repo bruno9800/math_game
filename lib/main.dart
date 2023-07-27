@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:math_game/firebase_options.dart';
+import 'package:math_game/services/provider/audio_provider.dart';
 import 'package:math_game/services/provider/player_provider.dart';
 import 'package:math_game/services/stream_widget.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  //final player = AudioPlayer();
+ // await player.play(UrlSource("assets/music.wav"));
+
   runApp(const MyApp());
 }
 
@@ -21,8 +26,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => PlayerProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PlayerProvider()),
+        ChangeNotifierProvider(create: (_) => AudioProvider()),
+      ],
       child: MaterialApp(
         //darkTheme: CustomTheme.darkMode,
         debugShowCheckedModeBanner: false,

@@ -35,7 +35,7 @@ class GameHeaderComponent extends StatelessWidget {
                 print('pause/play');
               },
             ),
-            SizedBox(width: 48,),
+            Spacer(),
             Column(
               children: [
                 Container(
@@ -57,7 +57,7 @@ class GameHeaderComponent extends StatelessWidget {
                 StarsComponent(fillStars: starsProvider.stars),
                 //Mostrar Tempo
                 Text(
-                  'Tempo: $elapsedSeconds segundos',
+                  '$elapsedSeconds seg.',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,

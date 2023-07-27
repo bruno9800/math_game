@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:math_game/utils/random_piece_color.dart';
 import '../pages/game_page.dart';
 import '../pages/states/stars_state.dart';
-import 'custom_theme.dart';
 
 class CustomLevelCard extends StatelessWidget {
   const CustomLevelCard({

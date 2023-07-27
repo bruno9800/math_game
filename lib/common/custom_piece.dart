@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:math_game/utils/random_piece_color.dart';
 import 'custom_theme.dart';
 
 class CustomPiece extends StatelessWidget {
@@ -9,12 +10,15 @@ class CustomPiece extends StatelessWidget {
         required this.expression,
         required this.isVisible,
         required this.color,
+        this.height,
+        this.width
       })
       : super(key: key);
   final VoidCallback? onPressed;
   final String expression;
   final bool isVisible;
   final Color color;
+  final double? height, width;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,8 @@ class CustomPiece extends StatelessWidget {
                         color: CustomTheme.Black, fontSize: 16)),
               ),
             ),
+            height: height,
+            width: width,
           ),
         )
     );

@@ -20,7 +20,7 @@ class GamePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: CustomTheme.Matthie,
         appBar: AppBar(
-          toolbarHeight: 120,
+          toolbarHeight: 100,
           centerTitle: true,
           backgroundColor: Colors.transparent,
           elevation: 0,

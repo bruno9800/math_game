@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,6 +10,7 @@ import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
 import 'package:math_game/pages/modals/over_modal.dart';
 import 'package:math_game/pages/modals/win_modal.dart';
+import 'package:math_game/services/provider/audio_provider.dart';
 import 'package:math_game/services/provider/player_provider.dart';
 import 'package:math_game/services/provider/stars_provider.dart';
 import 'package:math_game/utils/random_piece_color.dart';
@@ -31,10 +33,11 @@ class GameState extends State<GameComponent> {
   late Game game = Game(widget.gameLevel);
   final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
-  int gameScore = 7;
+  int gameScore = 0;
   final List<Piece> gameOverList = [];
 
-  bool handlePressedPiece(int actualResult) {
+  bool handlePressedPiece(int actualResult, BuildContext context) {
+    final audioProvider = Provider.of<AudioProvider>(context, listen: false);
     int quantity = 0;
     for(Piece piece in gameOverList) {
       if(piece.result == actualResult) {
@@ -43,6 +46,7 @@ class GameState extends State<GameComponent> {
     }
     print(quantity);
     if(quantity == 3 ) {
+      audioProvider.playSuccess();
       setState(() {
         gameOverList.removeWhere((element) => element.result == actualResult);
         gameScore++;
@@ -58,14 +62,13 @@ class GameState extends State<GameComponent> {
     final starsProvider = Provider.of<StarsProvider>(context);
     final playerProvider = Provider.of<PlayerProvider>(context);
     final colors = pieceColors.colors;
-
     final firebaseRepository = FirebaseRepositoryImpl();
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
           Expanded(
             child: Container(
-              margin: const EdgeInsets.only(right: 8, left: 8, bottom: 8),
+              margin: const EdgeInsets.only(right: 8, left: 8, bottom: 8,top: 8),
                 decoration: BoxDecoration(
                   color: CustomTheme.BOX_BACK,
                   borderRadius: BorderRadius.circular(4),
@@ -84,6 +87,7 @@ class GameState extends State<GameComponent> {
 
                       return CustomPiece(
                         expression: piece.expression,
+
                         isVisible: piece.isVisible,
                         color: colors[index],
                         onPressed: () {
@@ -94,8 +98,7 @@ class GameState extends State<GameComponent> {
                           setState(() {
                             gameOverList.add(piece);
                             if(gameOverList.length > 4) {
-                                gameOver = handlePressedPiece(piece.result);
-                                print("não foi game over");
+                                gameOver = handlePressedPiece(piece.result, context);
                                 if(gameOver) {
                                   starsProvider.pause();
                                   showDialog(
@@ -118,10 +121,10 @@ class GameState extends State<GameComponent> {
                                 );
 
                             } else {
-                              handlePressedPiece(piece.result);
+                              handlePressedPiece(piece.result, context);
                             }
                             }
-                            handlePressedPiece(piece.result);
+                            handlePressedPiece(piece.result, context);
                             if(gameScore == 8) {
                               firebaseRepository.updateStars(playerProvider.player!, widget.gameLevel, starsProvider.stars);
                               starsProvider.pause();
@@ -192,7 +195,7 @@ class GameState extends State<GameComponent> {
             print('dica');
           },
         ),
-        SizedBox(height: 20,),
+        SizedBox(height: 38,),
       ],
     );
   }

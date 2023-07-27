@@ -43,6 +43,8 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   google_fonts: ^5.1.0
   provider: ^6.0.5
+  just_audio: ^0.9.34
+  #audioplayers: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,8 @@ flutter:
   assets:
     - image.png
     - BackgroundMatthie.png
+    - music.wav
+    - success.wav
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

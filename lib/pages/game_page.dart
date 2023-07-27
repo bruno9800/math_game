@@ -6,15 +6,22 @@ import 'package:math_game/pages/states/game_state.dart';
 import 'package:math_game/services/provider/stars_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../services/provider/player_provider.dart';
+
 
 
 
 class GamePage extends StatelessWidget {
-  const GamePage({super.key});
+  const GamePage({super.key, this.gameLevel});
+
+  final int? gameLevel;
+
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    final playerProvider = Provider.of<PlayerProvider>(context);
+    final level = gameLevel ?? playerProvider.getStars().length;
     return ChangeNotifierProvider<StarsProvider>(
       create: (_) => StarsProvider(),
       child: Scaffold(
@@ -25,9 +32,9 @@ class GamePage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
-          title: GameHeaderComponent(),
+          title: GameHeaderComponent(currentLevel: level),
           ),
-        body: GameComponent(context: context),
+        body: GameComponent(context: context, gameLevel: level),
       ),
     );
   }

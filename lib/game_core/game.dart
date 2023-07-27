@@ -36,11 +36,14 @@ class Game {
     return pieces;
   }
 
+
+
   List<int> _generateNumbers(quantity) {
+
     List<int> numbers = [];
     Random random = Random();
     while (numbers.length < quantity) {
-      int randomNumber = random.nextInt(10 * difficulty - 1) + 1;
+      int randomNumber = random.nextInt(10 * (difficulty/10).ceil() - 1) + 1;
       //Math.floor(Math.random() * ( 10 * difficulty - 1)) + 1;
       if (!numbers.contains(randomNumber)) {
         numbers.add(randomNumber);

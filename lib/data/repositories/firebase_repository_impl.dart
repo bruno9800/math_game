@@ -18,10 +18,25 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
   }
 
   @override
+  Future<String?> getUserIdByEmail(String email) async {
+      try {
+        final querySnapshot = await playersCollection.where('email', isEqualTo: email).limit(1).get();
+
+        if(querySnapshot.size > 0) {
+          return querySnapshot.docs.first.id;
+        } else {
+          return null;
+        }
+      }catch(err) {
+        print('Erro ao obter o ID do usuário pelo email: $err');
+        return null;
+      }
+  }
+
+  @override
   Future<PlayerEntity?> getUserByEmail(String email) async {
     final querySnapshot =
         await playersCollection.where('email', isEqualTo: email).get();
-
     if (querySnapshot.docs.isNotEmpty) {
       final playerDoc = querySnapshot.docs.first;
       final playerEntity =
@@ -29,6 +44,37 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
       return playerEntity;
     }
 
+    return null;
+  }
+
+  @override
+  Future<void> unblockNextLevel(DocumentReference playerRef, PlayerEntity player) async {
+      final unblockLevel = player.stars.length + 1;
+      player.stars[unblockLevel.toString()] = 0;
+
+      playerRef.update(player.toJson());
+  }
+
+  @override
+  Future<void> updateStars(PlayerEntity player, int level, int stars) async {
+    print('atualizando usuario ${player.email}\n level: $level == estrelas: $stars');
+    try {
+      String? playerId = await getUserIdByEmail(player.email);
+      if(playerId != null) {
+        final playerRef = playersCollection.doc(playerId);
+        player.stars[(level).toString()] = stars;
+
+        if(level == player.stars.length) {
+          unblockNextLevel(playerRef, player);
+        }else {
+          await playerRef.update(player.toJson());
+        }
+
+      }
+
+    }catch(err) {
+      print('Erro ao atualizar Estrelas do usuário: $err');
+    }
     return null;
   }
 

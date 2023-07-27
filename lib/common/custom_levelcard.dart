@@ -24,8 +24,45 @@ class CustomLevelCard extends StatelessWidget {
         decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: backcolor, // Replace with desired color
+
       ),
-          child: Center(
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Center(
+                child: Text(
+          level.toString(),
+          style: GoogleFonts.mcLaren(
+                    fontSize: 32,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ),
+              stars < 4 ? Positioned(
+                bottom: -10,
+                left: 0,
+                right: 0,
+                child: StarsComponent(fillStars: stars),
+              )
+                  : SizedBox(),
+            ],
+          )
+    ),
+        onTap: (){
+          //index=level
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => GamePage(gameLevel: level)),
+          );
+        },
+    );
+  }
+}
+
+/*
+*
+* Center(
             child: Align(
               child: Column(
               children: [
@@ -43,14 +80,5 @@ class CustomLevelCard extends StatelessWidget {
           ),
         ),
       ),
-    ),
-        onTap: (){
-          //index=level
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const GamePage()),
-          );
-        },
-    );
-  }
-}
+*
+* */

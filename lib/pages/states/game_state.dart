@@ -4,10 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_piece.dart';
 import 'package:math_game/common/custom_theme.dart';
+import 'package:math_game/data/repositories/firebase_repository_impl.dart';
 import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
 import 'package:math_game/pages/modals/over_modal.dart';
 import 'package:math_game/pages/modals/win_modal.dart';
+import 'package:math_game/services/provider/player_provider.dart';
 import 'package:math_game/services/provider/stars_provider.dart';
 import 'package:math_game/utils/random_piece_color.dart';
 import 'package:provider/provider.dart';
@@ -26,10 +28,10 @@ class GameComponent extends StatefulWidget {
 }
 
 class GameState extends State<GameComponent> {
-  final Game game = Game(1);
+  late Game game = Game(widget.gameLevel);
   final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
-  int gameScore = 0;
+  int gameScore = 7;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult) {
@@ -54,7 +56,10 @@ class GameState extends State<GameComponent> {
   @override
   Widget build(BuildContext context) {
     final starsProvider = Provider.of<StarsProvider>(context);
+    final playerProvider = Provider.of<PlayerProvider>(context);
     final colors = pieceColors.colors;
+
+    final firebaseRepository = FirebaseRepositoryImpl();
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -118,6 +123,7 @@ class GameState extends State<GameComponent> {
                             }
                             handlePressedPiece(piece.result);
                             if(gameScore == 8) {
+                              firebaseRepository.updateStars(playerProvider.player!, widget.gameLevel, starsProvider.stars);
                               starsProvider.pause();
                               showDialog(
                                 context: context,

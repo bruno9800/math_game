@@ -21,7 +21,7 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     final playerProvider = Provider.of<PlayerProvider>(context);
-    final level = gameLevel ?? playerProvider.getStars().last;
+    final level = gameLevel ?? playerProvider.getStars().length;
     return ChangeNotifierProvider<StarsProvider>(
       create: (_) => StarsProvider(),
       child: Scaffold(

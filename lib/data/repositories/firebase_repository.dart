@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:math_game/data/models/player.dart';
 
 abstract class FirebaseRepository {
@@ -6,4 +7,5 @@ abstract class FirebaseRepository {
   Future<void> createUser(PlayerEntity player);
   Future<String?> getUserIdByEmail(String email);
   Future<void> updateStars(PlayerEntity player, int level, int stars);
+  Future<void> unblockNextLevel(DocumentReference playerRef, PlayerEntity player);
 }

@@ -18,10 +18,30 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
   }
 
   @override
+  Future<String?> getUserIdByEmail(String email) async {
+      try {
+        final querySnapshot = await playersCollection.where('email', isEqualTo: email).limit(1).get();
+
+        if(querySnapshot.size > 0) {
+          return querySnapshot.docs.first.id;
+        } else {
+          return null;
+        }
+      }catch(err) {
+        print('Erro ao obter o ID do usuário pelo email: $err');
+        return null;
+      }
+  }
+
+  @override
+  Future<void> updateStars(PlayerEntity player, int level, int stars) async {
+    return null;
+  }
+
+  @override
   Future<PlayerEntity?> getUserByEmail(String email) async {
     final querySnapshot =
         await playersCollection.where('email', isEqualTo: email).get();
-
     if (querySnapshot.docs.isNotEmpty) {
       final playerDoc = querySnapshot.docs.first;
       final playerEntity =

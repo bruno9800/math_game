@@ -12,12 +12,13 @@ import '../../common/custom_theme.dart';
 import '../../services/provider/player_provider.dart';
 
 class GameHeaderComponent extends StatelessWidget {
+  const GameHeaderComponent({super.key,required this.currentLevel});
+  final int currentLevel;
   @override
   Widget build(BuildContext context) {
     return Consumer<StarsProvider>(
       builder: (context, starsProvider, _) {
         final elapsedSeconds = starsProvider.elapsedSeconds;
-        final currentLevel = Provider.of<PlayerProvider>(context).getStars().last + 1;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,

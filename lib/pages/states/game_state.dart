@@ -13,7 +13,9 @@ import 'package:math_game/utils/random_piece_color.dart';
 import 'package:provider/provider.dart';
 
 class GameComponent extends StatefulWidget {
-  GameComponent({super.key, required BuildContext context});
+  GameComponent({super.key, required BuildContext context, required this.gameLevel});
+
+  final int gameLevel;
 
 
   @override

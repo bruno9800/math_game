@@ -7,6 +7,7 @@ import 'package:math_game/services/provider/stars_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../services/provider/player_provider.dart';
+import '../../services/provider/pause_provider.dart';
 
 
 
@@ -22,8 +23,16 @@ class GamePage extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     final playerProvider = Provider.of<PlayerProvider>(context);
     final level = gameLevel ?? playerProvider.getStars().length;
-    return ChangeNotifierProvider<StarsProvider>(
+    return
+      MultiProvider(providers:
+   [
+      ChangeNotifierProvider<StarsProvider>(
       create: (_) => StarsProvider(),
+    ),
+    ChangeNotifierProvider<GamePauseProvider>(
+    create: (_) => GamePauseProvider(), // Adicione a inicialização do GamePauseProvider aqui
+    ),
+    ],
       child: Scaffold(
         backgroundColor: CustomTheme.Matthie,
         appBar: AppBar(

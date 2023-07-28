@@ -3,6 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:math_game/common/custom_icon_button.dart';
 import 'package:math_game/common/custom_theme.dart';
+import 'package:math_game/services/provider/pause_provider.dart';
+import 'package:math_game/services/provider/stars_provider.dart';
+import 'package:provider/provider.dart';
 
 class PauseModal extends StatelessWidget {
   final Function onRestart;
@@ -11,6 +14,9 @@ class PauseModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final pauseProvider = Provider.of<GamePauseProvider>(context);
+    final starsProvider = Provider.of<StarsProvider>(context);
 
     return AlertDialog(
       actionsPadding: EdgeInsets.only(bottom: 32),
@@ -52,7 +58,9 @@ class PauseModal extends StatelessWidget {
               icon: FontAwesomeIcons.rotate,
               onPressed: () {
                 onRestart();
-                Navigator.of(context).pop(); // Fecha o modal
+                pauseProvider.unpause();
+                starsProvider.restart();
+                //Navigator.of(context).pop(); // Fecha o modal
               },
               padding: 4,
             ),

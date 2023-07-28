@@ -105,9 +105,9 @@ class ProfilePage extends StatelessWidget {
                                 color: CustomTheme.BackgroundColor,
                               ),
                               child: Text(
-                                "1° Lugar",
+                                "1°",
                                 style: GoogleFonts.nunitoSans(
-                                  fontSize: 25,
+                                  fontSize: 18,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -125,7 +125,7 @@ class ProfilePage extends StatelessWidget {
                                   Text(
                                     "Detalhes da Conta",
                                     style: GoogleFonts.nunitoSans(
-                                      fontSize: 25,
+                                      fontSize: 22,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -139,7 +139,7 @@ class ProfilePage extends StatelessWidget {
                                   Text(
                                     "E-mail:",
                                     style: GoogleFonts.nunitoSans(
-                                      fontSize: 25,
+                                      fontSize: 18,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -147,7 +147,7 @@ class ProfilePage extends StatelessWidget {
                                   Text(
                                     usuario.email!,
                                     style: GoogleFonts.nunitoSans(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -155,27 +155,7 @@ class ProfilePage extends StatelessWidget {
                                   Spacer(),
                                 ],
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Número:",
-                                    style: GoogleFonts.nunitoSans(
-                                      fontSize: 25,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    usuario.phoneNumber?.substring(2) ?? "Não Informado",
-                                    style: GoogleFonts.nunitoSans(
-                                      fontSize: 20,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
+
                             ],
                           ),
                         ),

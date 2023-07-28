@@ -15,6 +15,10 @@ class PlayerProvider with ChangeNotifier {
     return player!.stars.values.toList();
   }
 
+  void updateStars(int level, int stars) async {
+    await FirebaseRepositoryImpl().updateStars(player!, level, stars);
+    notifyListeners();
+  }
   String getEmail() {
     return player!.email;
   }

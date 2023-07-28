@@ -9,4 +9,10 @@ class GamePauseProvider with ChangeNotifier {
     _isPaused = value;
     notifyListeners();
   }
+
+  void unpause() {
+    _isPaused = false;
+    notifyListeners();
+  }
+
 }

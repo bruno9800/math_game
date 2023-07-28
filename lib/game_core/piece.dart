@@ -17,26 +17,26 @@ class Piece {
   String setExpression() {
     switch(difficult) {
       case 1: return _getExpressionWithN(result, 2, ['add'], rangeAdd: 10).$1;
-      case 2: return _getExpressionWithN(result, 2, ['add'], rangeAdd: 15).$1;
+      case 2: return _getExpressionWithN(result, 2, ['add'], rangeAdd: 10).$1;
       case 3: return _getExpressionWithN(result, 2, ['add', 'mult']).$1;
-      case 4: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 15).$1;
-      case 5: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 20).$1;
-      case 6: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 25).$1;
+      case 4: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 10).$1;
+      case 5: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 10).$1;
+      case 6: return _getExpressionWithN(result, 2, ['add', 'mult'], rangeAdd: 12).$1;
       case 7: return _getExpressionWithN(result, 2, ['add', 'mult', 'div']).$1;
-      case 8: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 15).$1;
-      case 9: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 20).$1;
-      case 10: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 25).$1;
+      case 8: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 12).$1;
+      case 9: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 12).$1;
+      case 10: return _getExpressionWithN(result, 2, ['add', 'mult', 'div'], rangeAdd: 12).$1;
       case 11: return _getExpressionWithN(result, 3, ['add'], rangeAdd: 10).$1;
-      case 12: return _getExpressionWithN(result, 3, ['add'], rangeAdd: 15).$1;
+      case 12: return _getExpressionWithN(result, 3, ['add'], rangeAdd: 12).$1;
       case 13: return _getExpressionWithN(result, 3, ['add', 'mult']).$1;
-      case 14: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 15).$1;
-      case 15: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 20).$1;
-      case 16: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 25).$1;
+      case 14: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 10).$1;
+      case 15: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 10).$1;
+      case 16: return _getExpressionWithN(result, 3, ['add', 'mult'], rangeAdd: 10).$1;
       case 17: return _getExpressionWithN(result, 3, ['add', 'mult', 'div']).$1;
-      case 18: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 15).$1;
-      case 19: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 20).$1;
-      case 20: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 25).$1;
-      default: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 50).$1;
+      case 18: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 10).$1;
+      case 19: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 10).$1;
+      case 20: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 10).$1;
+      default: return _getExpressionWithN(result, 3, ['add', 'mult', 'div'], rangeAdd: 10).$1;
     }
   }
 
@@ -167,7 +167,3 @@ class Piece {
   }
 }
 
-void main() {
-  Piece piece = new Piece(5, 1);
-  print(piece.expression);
-}

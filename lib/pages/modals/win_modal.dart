@@ -51,8 +51,8 @@ class GameWinModal extends StatelessWidget {
           icon: FontAwesomeIcons.arrowRight,
           padding: 4,
           onPressed: () {
-            onMenu();
-            Navigator.of(context).pop(); // Fecha o modal
+            Navigator.of(context).pop();
+            onMenu();// Fecha o modal
           },
         ),
       ],

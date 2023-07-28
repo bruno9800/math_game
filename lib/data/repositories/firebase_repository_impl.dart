@@ -67,6 +67,7 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
         if(level == player.stars.length) {
           unblockNextLevel(playerRef, player);
         }else {
+
           await playerRef.update(player.toJson());
         }
 

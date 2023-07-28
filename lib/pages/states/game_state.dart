@@ -7,6 +7,7 @@ import 'package:math_game/common/custom_theme.dart';
 import 'package:math_game/data/repositories/firebase_repository_impl.dart';
 import 'package:math_game/game_core/game.dart';
 import 'package:math_game/game_core/piece.dart';
+import 'package:math_game/pages/game_page.dart';
 import 'package:math_game/pages/modals/over_modal.dart';
 import 'package:math_game/pages/modals/pause_modal.dart';
 import 'package:math_game/pages/modals/win_modal.dart';
@@ -33,7 +34,7 @@ class GameState extends State<GameComponent> {
   late Game game = Game(widget.gameLevel);
   final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
-  int gameScore = 0;
+  int gameScore = 7;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult, BuildContext context) {
@@ -64,7 +65,6 @@ class GameState extends State<GameComponent> {
     final starsProvider = Provider.of<StarsProvider>(context);
     final playerProvider = Provider.of<PlayerProvider>(context);
     final colors = pieceColors.colors;
-    final firebaseRepository = FirebaseRepositoryImpl();
 
     return Stack(
       children: [
@@ -135,11 +135,8 @@ class GameState extends State<GameComponent> {
                               }
                               handlePressedPiece(piece.result, context);
                               if (gameScore == 8) {
-                                firebaseRepository.updateStars(
-                                  playerProvider.player!,
-                                  widget.gameLevel,
-                                  starsProvider.stars,
-                                );
+                                playerProvider.updateStars(widget.gameLevel, starsProvider.stars);
+
                                 starsProvider.pause();
                                 showDialog(
                                   context: context,
@@ -156,7 +153,10 @@ class GameState extends State<GameComponent> {
                                         });
                                       },
                                       onMenu: () {
-                                        Navigator.pop(context);
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => GamePage(gameLevel: widget.gameLevel + 1))
+                                        );
                                       },
                                       stars: starsProvider.stars,
                                     );

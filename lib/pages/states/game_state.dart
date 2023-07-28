@@ -29,15 +29,16 @@ class GameComponent extends StatefulWidget {
 
 }
 
-class GameState extends State<GameComponent> {
+class GameState extends State<GameComponent>{
   late Game game = Game(widget.gameLevel);
+  late AudioProvider soundEffect;
   final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
   int gameScore = 0;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult, BuildContext context) {
-    final audioProvider = Provider.of<AudioProvider>(context, listen: false);
+
     int quantity = 0;
     for(Piece piece in gameOverList) {
       if(piece.result == actualResult) {
@@ -46,8 +47,9 @@ class GameState extends State<GameComponent> {
     }
     print(quantity);
     if(quantity == 3 ) {
-      audioProvider.playSuccess();
       setState(() {
+        soundEffect = Provider.of<AudioProvider>(context, listen: false);
+        soundEffect.playSuccess();
         gameOverList.removeWhere((element) => element.result == actualResult);
         gameScore++;
       });

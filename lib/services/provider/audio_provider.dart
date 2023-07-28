@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 class AudioProvider extends ChangeNotifier {
   final player = AudioPlayer();
   final successPlayer = AudioPlayer();
+  int successVolume = 70;
 
   Future<void> playMusic() async {
     try {
@@ -16,12 +17,6 @@ class AudioProvider extends ChangeNotifier {
       print('Erro na reprodução da música: $e');
     }
 
-    try {
-      await successPlayer.setAsset('success.wav');
-      successPlayer.setVolume(70/100);
-    }catch(e) {
-      print('Erro na reprodução do toque de sucesso: $e');
-    }
   }
 
   // Implemente os métodos para pausar, retomar e parar a música, se necessário.
@@ -30,15 +25,17 @@ class AudioProvider extends ChangeNotifier {
     await player.setVolume(value/100);
   }
 
-  void changeVolumeEffect(int value ) async {
-    await successPlayer.setVolume(value / 100);
+  void changeVolumeEffect(int value ) {
+    successVolume = value;
   }
 
-  void playSuccess() async {
-    if (successPlayer.playerState.playing) {
-      await successPlayer.seek(Duration.zero);
-    } else {
+  Future<void> playSuccess() async {
+    try {
+      await successPlayer.setAsset('success.mp3');
+      await successPlayer.setVolume(successVolume / 100);
       await successPlayer.play();
+    }catch(e) {
+      print('Erro na reprodução do toque de sucesso: $e');
     }
   }
 

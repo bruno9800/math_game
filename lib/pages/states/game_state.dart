@@ -34,7 +34,7 @@ class GameState extends State<GameComponent> {
   late Game game = Game(widget.gameLevel);
   final pieceColors = RandomPiecesColor(24);
   bool gameOver = false;
-  int gameScore = 7;
+  int gameScore = 0;
   final List<Piece> gameOverList = [];
 
   bool handlePressedPiece(int actualResult, BuildContext context) {

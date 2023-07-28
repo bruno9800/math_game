@@ -24,3 +24,7 @@
 
 - [firestore](https://firebase.google.com/docs/firestore?hl=pt-br)
 - [dart](https://dart.dev/guides)
+
+
+## Baixar Aplicativo
+[![portfolio](https://img.shields.io/badge/Download_Aplicativo-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://drive.google.com/file/d/1iIcuC4v-gkIH-RtPqP3yUC_q7f4UGpyL/view?usp=sharing)

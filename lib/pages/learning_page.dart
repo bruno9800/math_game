@@ -113,6 +113,11 @@ class LearningPage extends StatelessWidget {
                           },
                         ),
                         SizedBox(height: 16),
+                        CustomButton(
+                          color: CustomTheme.Button,
+                          label: 'Jogo',
+                          onPressed: null,
+                        ),
                         Spacer(),
                         CustomIconButton(
                           icon: FontAwesomeIcons.arrowLeftLong,

@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 import '../../common/custom_icon_button.dart';
 import '../../common/custom_theme.dart';
 import '../../services/provider/player_provider.dart';
-import '../../services/provider/pause_provider.dart';
 
 class GameHeaderComponent extends StatelessWidget {
   const GameHeaderComponent({super.key,required this.currentLevel});
@@ -26,18 +25,12 @@ class GameHeaderComponent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CustomIconButton(
-              icon: starsProvider.isRunning
-                  ? FontAwesomeIcons.pause
-                  : FontAwesomeIcons.play,
+              icon: starsProvider.isRunning ? FontAwesomeIcons.pause : FontAwesomeIcons.play,
               onPressed: () {
                 if (starsProvider.isRunning) {
                   starsProvider.pause();
-                  Provider.of<GamePauseProvider>(context, listen: false)
-                      .setPaused(true); // Notifique o GamePauseProvider sobre a alteração do estado de pausa
                 } else {
                   starsProvider.unpause();
-                  Provider.of<GamePauseProvider>(context, listen: false)
-                      .setPaused(false); // Notifique o GamePauseProvider sobre a alteração do estado de pausa
                 }
                 print('pause/play');
               },

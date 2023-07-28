@@ -1,5 +1,3 @@
-// ignore_for_file: sort_child_properties_last, prefer_const_constructors, non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_game/common/custom_button.dart';
@@ -12,20 +10,20 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: CustomTheme.BackColor,
-        body: Padding(
-          child: Center(
-            child: Column(children: [
+      backgroundColor: CustomTheme.Matthie,
+      body: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Center(
+          child: Column(
+            children: [
               SizedBox(height: 190),
-              //Image.asset('images/bleff_title.png', fit: BoxFit.cover),
-              Text('Matthie.',
-                  style: TextStyle(
-                      fontSize: 73,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.white)),
-              //Text('Developed by Major_Dino', style: TextStyle(color: CustomTheme.ForeColor, fontSize: 18)),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Uncomment the following line to add the background image
+                  Image.asset('matthie_logo.png', fit: BoxFit.cover),
+                ],
+              ),
               SizedBox(height: 100),
               CustomButton(
                 color: CustomTheme.RED,
@@ -34,10 +32,11 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   AuthService().signInWithGoogle();
                 },
-              )
-            ]),
+              ),
+            ],
           ),
-          padding: EdgeInsets.all(15.0),
-        ));
+        ),
+      ),
+    );
   }
 }

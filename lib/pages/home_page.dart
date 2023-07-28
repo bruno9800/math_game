@@ -62,14 +62,8 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
               ),
               SizedBox(height: 10),
-              Text('Matthie.',
-                  style: TextStyle(
-                      fontSize: 73,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.white)),
-              SizedBox(height: 60),
+              Image.asset('matthie_home.png', fit: BoxFit.cover),
+              SizedBox(height: 30),
               CustomButton(
                 color: CustomTheme.Button,
                 label: 'Jogar',
@@ -105,17 +99,6 @@ class HomePage extends StatelessWidget {
                 },
               ),
               SizedBox(height: 16),
-              CustomButton(
-                color: CustomTheme.Button,
-                label: 'Ranking',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RankingPage()),
-                  );
-                  print('entrou');
-                },
-              ),
               SizedBox(height: 100),
               CustomIconButton(
                   icon: FontAwesomeIcons.listOl,
